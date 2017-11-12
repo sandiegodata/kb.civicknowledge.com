@@ -1,9 +1,15 @@
 
 
 {
+    "authors": [
+        {
+            "name": "Eric Busboom"
+        }
+    ],
+    "date": "2017-11-11T21:01:56.530677",
     "description": "Maps and time ryhthms in the San Diego Police calls for service dataset",
     "draft": false,
-    "github": "https://github.com/CivicKnowledge/kb.civicknowledge.com/blob/master/notebooks/analysis/San%20Diego%20Police%20Calls%20For%20Service.ipynb",
+    "github": "https://github.com/sandiegodata/kb.sandiegodata.org/blob/master/notebooks/analysis/San%20Diego%20Police%20Calls%20For%20Service.ipynb",
     "section": "notebooks",
     "show_input": "show",
     "slug": "san-diego-police-calls-for-service",
