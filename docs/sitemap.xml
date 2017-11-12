@@ -3,45 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://kb.civicknowledge.com/notebooks/example-of-notebook-conversion/</loc>
+    <loc>http://kb.sandiegodata.org/notebooks/example-of-notebook-conversion/</loc>
+    <lastmod>2017-11-11T20:05:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://kb.civicknowledge.com/notebooks/san-diego-police-calls-for-service/</loc>
+    <loc>http://kb.sandiegodata.org/analysis/example-of-notebook-conversion/</loc>
   </url>
   
   <url>
-    <loc>http://kb.civicknowledge.com/categories/</loc>
+    <loc>http://kb.sandiegodata.org/analysis/san-diego-police-calls-for-service/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kb.sandiegodata.org/notebooks/san-diego-police-calls-for-service/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kb.sandiegodata.org/analysis/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://kb.civicknowledge.com/</loc>
-  </url>
-  
-  <url>
-    <loc>http://kb.civicknowledge.com/company/</loc>
-  </url>
-  
-  <url>
-    <loc>http://kb.civicknowledge.com/faq/</loc>
-  </url>
-  
-  <url>
-    <loc>http://kb.civicknowledge.com/notebooks/</loc>
+    <loc>http://kb.sandiegodata.org/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://kb.civicknowledge.com/password-recovery/</loc>
+    <loc>http://kb.sandiegodata.org/</loc>
+    <lastmod>2017-11-11T20:05:06+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://kb.civicknowledge.com/account/</loc>
+    <loc>http://kb.sandiegodata.org/company/</loc>
   </url>
   
   <url>
-    <loc>http://kb.civicknowledge.com/tags/</loc>
+    <loc>http://kb.sandiegodata.org/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kb.sandiegodata.org/notebooks/</loc>
+    <lastmod>2017-11-11T20:05:06+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://kb.sandiegodata.org/password-recovery/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kb.sandiegodata.org/account/</loc>
+  </url>
+  
+  <url>
+    <loc>http://kb.sandiegodata.org/tags/</loc>
     <priority>0</priority>
   </url>
   
