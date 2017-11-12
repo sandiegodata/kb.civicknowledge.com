@@ -65,7 +65,8 @@
   <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
 
  <link href="/css/custom.css" rel="stylesheet" type="text/css">
-
+ <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+ 
 
   <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
   </script>
@@ -113,21 +114,15 @@
 </ul>
 
 <p>This notebook requires the metapack package for downloading URLS, which you should be able to install, on Python 3.5 or later, with <code>pip install metapack</code></p>
-
-<pre><code class="language-python">%matplotlib inline
-import metapack as mp
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import geopandas as gpd 
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">metapack</span> <span class="kn">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="kn">as</span> <span class="nn">gpd</span> </code></pre></div>
 <p>The Metapack system allows for packaging data, long with all of the metadata, and the <code>open_package</code> function can be used to load packages off the web. The the URL below is to a CSV package, which just referrs to CSV files on the web. You can get the link by to the CSV package file from the resource for <code>sandiego.gov-police_regions-1</code> in the <a href="http://data.sandiegodata.org/dataset/sandiego-gov-police_regions">SRDRL data library repository page for the package</a></p>
-
-<pre><code class="language-python">regions = mp.open_package('http://library.metatab.org/sandiego.gov-police_regions-1.csv')
-regions
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">regions</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">open_package</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;http://library.metatab.org/sandiego.gov-police_regions-1.csv&#39;</span><span class="p">)</span>
+<span class="n">regions</span></code></pre></div>
 <p><h1>San Diego Police Regions</h1>
 <p><p>sandiego.gov-police_regions-1</p>
 <p>Boundary shapes for San Diego neighborhoods, beats and divisions.</p>
@@ -143,11 +138,8 @@ regions
 </ol></p>
 
 <p>After opening packages, we can ask the package for what resources it has, download those resources, and turn them into Pandas dataframes.</p>
-
-<pre><code class="language-python">calls_p = mp.open_package('http://library.metatab.org/sandiego.gov-police_calls-2015e-1.csv')
-calls_p
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">calls_p</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">open_package</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;http://library.metatab.org/sandiego.gov-police_calls-2015e-1.csv&#39;</span><span class="p">)</span>
+<span class="n">calls_p</span></code></pre></div>
 <p><h1>Police Calls for Service</h1>
 <p><p>sandiego.gov-police_calls-2015e-1</p>
 <p>Calls dispatched by the San Diego Police Department’s communications dispatch</p>
@@ -167,11 +159,8 @@ calls_p
 <li><p><strong>pd_calls_2016</strong> - <a target="_blank" href="http://seshat.datasd.org/pd/pd_calls_for_service_2016_datasd.csv"><a href="http://seshat.datasd.org/pd/pd_calls_for_service_2016_datasd.csv">http://seshat.datasd.org/pd/pd_calls_for_service_2016_datasd.csv</a></a> Service calls for 2016</p></li>
 <li><p><strong>pd_calls_2017_ytd</strong> - <a target="_blank" href="http://seshat.datasd.org/pd/pd_calls_for_service_2017_datasd.csv"><a href="http://seshat.datasd.org/pd/pd_calls_for_service_2017_datasd.csv">http://seshat.datasd.org/pd/pd_calls_for_service_2017_datasd.csv</a></a> Service calls for 2017, Year To Date</p></li></p>
 </ol></p>
-
-<pre><code class="language-python">calls_r = calls_p.resource('pd_calls')
-calls_r
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">calls_r</span> <span class="o">=</span> <span class="n">calls_p</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;pd_calls&#39;</span><span class="p">)</span>
+<span class="n">calls_r</span></code></pre></div>
 <p><h3><a name="resource-pd_calls"></a>pd_calls</h3><p><a target="_blank" href="http://library.metatab.org/sandiego.gov-police_calls-2015e-1/data/pd_calls.csv"><a href="http://library.metatab.org/sandiego.gov-police_calls-2015e-1/data/pd_calls.csv">http://library.metatab.org/sandiego.gov-police_calls-2015e-1/data/pd_calls.csv</a></a></p><table>
 <tr><th>Header</th><th>Type</th><th>Description</th></tr><tr><td>incident_num</td><td>text</td><td>Unique Incident Identifier</td></tr>
 <tr><td>date_time</td><td>datetime</td><td>Date / Time in 24 Hour Format</td></tr>
@@ -187,12 +176,9 @@ calls_r
 <tr><td>disposition</td><td>text</td><td>Classification</td></tr>
 <tr><td>beat</td><td>integer</td><td>San Diego PD Beat</td></tr>
 <tr><td>priority</td><td>text</td><td>Priority assigned by dispatcher</td></tr> </table></p>
-
-<pre><code class="language-python">call_type_r = calls_p.resource('call_type')
-call_types = call_type_r.dataframe().rename(columns={'description':'call_type_desc'})
-call_types.head()
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">call_type_r</span> <span class="o">=</span> <span class="n">calls_p</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;call_type&#39;</span><span class="p">)</span>
+<span class="n">call_types</span> <span class="o">=</span> <span class="n">call_type_r</span><span class="o">.</span><span class="n">dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="sa"></span><span class="s1">&#39;description&#39;</span><span class="p">:</span><span class="sa"></span><span class="s1">&#39;call_type_desc&#39;</span><span class="p">})</span>
+<span class="n">call_types</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></code></pre></div>
 <div>
 <style>
     .dataframe thead tr:only-child th {
@@ -244,11 +230,8 @@ call_types.head()
   </tbody>
 </table>
 </div>
-
-<pre><code class="language-python">regions_r = regions.resource('pd_beats')
-regions_r
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">regions_r</span> <span class="o">=</span> <span class="n">regions</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;pd_beats&#39;</span><span class="p">)</span>
+<span class="n">regions_r</span></code></pre></div>
 <p><h3><a name="resource-pd_beats"></a>pd_beats</h3><p><a target="_blank" href="http://library.metatab.org/sandiego.gov-police_regions-1/data/pd_beats.csv"><a href="http://library.metatab.org/sandiego.gov-police_regions-1/data/pd_beats.csv">http://library.metatab.org/sandiego.gov-police_regions-1/data/pd_beats.csv</a></a></p><table>
 <tr><th>Header</th><th>Type</th><th>Description</th></tr><tr><td>id</td><td>integer</td><td></td></tr>
 <tr><td>objectid</td><td>integer</td><td></td></tr>
@@ -257,92 +240,78 @@ regions_r
 <tr><td>serv</td><td>integer</td><td></td></tr>
 <tr><td>name</td><td>text</td><td></td></tr>
 <tr><td>geometry</td><td>geometry</td><td></td></tr> </table></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># The beats.cx[:-116.8,:] bit indexes the bounding box to exclude the empty portion of the </span>
+<span class="c1"># county. San Diego owns the footprint of a dam in east county, which displays as a tiny</span>
+<span class="c1"># dot in the middle of empty space. </span>
+<span class="c1"># Note that this isn&#39;t actually defininf the bounding box; it&#39;s cutting out far-east regions, </span>
+<span class="c1"># and then GeoPandas creates the smaller bounding box that excludes them. So, the actually </span>
+<span class="c1"># value in the cx indexder can vary a bit. </span>
 
-<pre><code class="language-python"># The beats.cx[:-116.8,:] bit indexes the bounding box to exclude the empty portion of the 
-# county. San Diego owns the footprint of a dam in east county, which displays as a tiny
-# dot in the middle of empty space. 
-# Note that this isn't actually defininf the bounding box; it's cutting out far-east regions, 
-# and then GeoPandas creates the smaller bounding box that excludes them. So, the actually 
-# value in the cx indexder can vary a bit. 
+<span class="c1"># Converting to float makes merging with the calls df ewasier, since the beat column</span>
+<span class="c1"># in that df has nans. </span>
 
-# Converting to float makes merging with the calls df ewasier, since the beat column
-# in that df has nans. 
-
-beats = regions_r.dataframe().geo
-beats['beat'] = beats.beat.astype(float)
-beats = beats.set_index('beat').cx[:-116.55,:]
-beats.plot();
-</code></pre>
-
+<span class="n">beats</span> <span class="o">=</span> <span class="n">regions_r</span><span class="o">.</span><span class="n">dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">geo</span>
+<span class="n">beats</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">beats</span><span class="o">.</span><span class="n">beat</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">beats</span> <span class="o">=</span> <span class="n">beats</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cx</span><span class="p">[:</span><span class="o">-</span><span class="mf">116.55</span><span class="p">,:]</span>
+<span class="n">beats</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span></code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_9_0.png" alt="png" /></p>
 
 <p>There are a lot of interesting patterns in crime data when you create heat maps of two time dimensions, a visualization called a &ldquo;Rhythm Map&rdquo;. We&rsquo;ll add the time dimensions now for use later.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pd_calls</span> <span class="o">=</span> <span class="n">calls_r</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
-<pre><code class="language-python">pd_calls = calls_r.read_csv(low_memory=False)
-
-def augment_time(df):
-    df['date_time'] = pd.to_datetime(df.date_time)
+<span class="k">def</span> <span class="nf">augment_time</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;date_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="p">)</span>
     
-    df['hour'] = df.date_time.dt.hour
-    df['month'] = df.date_time.dt.month
-    df['year'] = df.date_time.dt.year
-    df['dayofweek'] = df.date_time.dt.dayofweek
-    df['weekofyear'] = df.date_time.dt.weekofyear
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;dayofweek&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofweek</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;weekofyear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekofyear</span>
 
-    df['weekofdata'] = (df.year-df.year.min())*52+df.date_time.dt.weekofyear
-    df['monthofdata'] = (df.year-df.year.min())*12+df.date_time.dt.month
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;weekofdata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="nb">min</span><span class="p">())</span><span class="o">*</span><span class="mi">52</span><span class="o">+</span><span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekofyear</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;monthofdata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="nb">min</span><span class="p">())</span><span class="o">*</span><span class="mi">12</span><span class="o">+</span><span class="n">df</span><span class="o">.</span><span class="n">date_time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
 
-    return df
+    <span class="k">return</span> <span class="n">df</span>
 
-assert pd_calls.call_type.dtype == call_types.call_type.dtype
+<span class="k">assert</span> <span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">call_types</span><span class="o">.</span><span class="n">call_type</span><span class="o">.</span><span class="n">dtype</span>
 
-pd_calls = augment_time(pd_calls).merge(call_types, on='call_type')
+<span class="n">pd_calls</span> <span class="o">=</span> <span class="n">augment_time</span><span class="p">(</span><span class="n">pd_calls</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">call_types</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;call_type&#39;</span><span class="p">)</span>
 
-pd_calls['beat'] = pd_calls.beat.astype(float)
+<span class="n">pd_calls</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_calls</span><span class="o">.</span><span class="n">beat</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
-pd_calls = pd_calls.merge(beats.reset_index()[['beat', 'name']], on='beat')\
-    .rename(columns={'name':'beat_name'})
-
-</code></pre>
-
+<span class="n">pd_calls</span> <span class="o">=</span> <span class="n">pd_calls</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">beats</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[[</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;name&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="sa"></span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="sa"></span><span class="s1">&#39;beat_name&#39;</span><span class="p">})</span></code></pre></div>
 <h1 id="incident-count-maps">Incident Count Maps</h1>
 
 <p>The following maps plot the counts of incidents, over the whole dataset, for different call types, per beat. As is familiar to anyone who has worked with San Diego area crime data, the host spots for most incident types are Pacific Beach and Downtown.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">plot_geo</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">color_col</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="c1"># Need to get aspect right or it looks wacky</span>
+    <span class="n">bb</span> <span class="o">=</span> <span class="n">beats</span><span class="o">.</span><span class="n">total_bounds</span>
+    <span class="n">aspect</span> <span class="o">=</span> <span class="p">(</span><span class="n">bb</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">bb</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span> <span class="p">(</span><span class="n">bb</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">bb</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">x_dim</span> <span class="o">=</span> <span class="mi">8</span>
 
-<pre><code class="language-python">
-def plot_geo(df, color_col, title=None):
-    # Need to get aspect right or it looks wacky
-    bb = beats.total_bounds
-    aspect = (bb[3] - bb[1])/ (bb[2]-bb[0])
-    x_dim = 8
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_dim</span><span class="p">,</span><span class="n">x_dim</span><span class="o">*</span><span class="n">aspect</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-    fig = plt.figure(figsize = (x_dim,x_dim*aspect))
-    ax = fig.add_subplot(111)
-
-    df.plot(ax=ax,column=color_col, cmap='RdYlGn_r',
-                     scheme='fisher_jenks', legend=True);
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="n">color_col</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;RdYlGn_r&#39;</span><span class="p">,</span>
+                     <span class="n">scheme</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
   
-    if title:
-        fig.suptitle(title, fontsize=18);
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
 
-    leg = ax.get_legend()
+    <span class="n">leg</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span>
    
-    #leg.set_bbox_to_anchor((0., 1.02, 1., .102))
-    leg.set_bbox_to_anchor((1,.5))
+    <span class="c1">#leg.set_bbox_to_anchor((0., 1.02, 1., .102))</span>
+    <span class="n">leg</span><span class="o">.</span><span class="n">set_bbox_to_anchor</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="o">.</span><span class="mi">5</span><span class="p">))</span>
 
-    plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
         
-_ = gpd.GeoDataFrame(pd_calls.groupby('beat').incident_num.count().to_frame()\
-                               .join(beats))
+<span class="n">_</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">incident_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+                               <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beats</span><span class="p">))</span>
 
-plot_geo(_, 'incident_num', 'Incidents Per Beat, 2015 to Aug 2017')
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;Incidents Per Beat, 2015 to Aug 2017&#39;</span><span class="p">)</span></code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_13_0.png" alt="png" /></p>
-
-<pre><code class="language-python">pd_calls.call_type_desc.value_counts().iloc[10:30]
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span></code></pre></div>
 <pre><code>FLAG DOWN/FIELD INITIATED         28280
 REQUEST FOR TOW TRUCK             27274
 NO DETAIL ACCIDENT                27070
@@ -365,43 +334,31 @@ FOOT PATROL/FIELD INITIATED       14955
 BURGLARY REPORT                   14652
 Name: call_type_desc, dtype: int64
 </code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">_</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd_calls</span><span class="p">[</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;LOUD PARTY&#39;</span><span class="p">]</span>
+                             <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span>
+                             <span class="o">.</span><span class="n">incident_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+                             <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beats</span><span class="p">))</span>
 
-<pre><code class="language-python">_ = gpd.GeoDataFrame(pd_calls[pd_calls.call_type_desc == 'LOUD PARTY']
-                             .groupby('beat')
-                             .incident_num.count().to_frame()\
-                             .join(beats))
-
-plot_geo(_, 'incident_num', &quot;LOUD PARTY calls, 2015 to Aug 2017&quot;)             
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;LOUD PARTY calls, 2015 to Aug 2017&#34;</span><span class="p">)</span>             </code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_15_0.png" alt="png" /></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">_</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd_calls</span><span class="p">[</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;ILLEGAL PARKING&#39;</span><span class="p">]</span>
+                             <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span>
+                             <span class="o">.</span><span class="n">incident_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+                             <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beats</span><span class="p">))</span>
 
-<pre><code class="language-python">_ = gpd.GeoDataFrame(pd_calls[pd_calls.call_type_desc == 'ILLEGAL PARKING']
-                             .groupby('beat')
-                             .incident_num.count().to_frame()\
-                             .join(beats))
-
-plot_geo(_, 'incident_num',  &quot;ILLEGAL PARKING calls, 2015 to Aug 2017&quot;)  
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span>  <span class="sa"></span><span class="s2">&#34;ILLEGAL PARKING calls, 2015 to Aug 2017&#34;</span><span class="p">)</span>  </code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_16_0.png" alt="png" /></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">_</span> <span class="o">=</span> <span class="n">pd_calls</span><span class="p">[</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;BATTERY&#39;</span><span class="p">]</span>\
+                             <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span>\
+                             <span class="o">.</span><span class="n">incident_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+                             <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beats</span><span class="p">)</span>
 
-<pre><code class="language-python">_ = pd_calls[pd_calls.call_type_desc == 'BATTERY']\
-                             .groupby('beat')\
-                             .incident_num.count().to_frame()\
-                             .join(beats)
 
-
-plot_geo(gpd.GeoDataFrame(_), 'incident_num', &quot;BATTERY calls, 2015 to Aug 2017&quot;)  
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">_</span><span class="p">),</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;BATTERY calls, 2015 to Aug 2017&#34;</span><span class="p">)</span>  </code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_17_0.png" alt="png" /></p>
 
 <p>Sometimes, very high density areas like PB and Downtown will obscure patterns in other areas. One of the ways to handle this is to just exclude those areas. First, let&rsquo;s locate which are the highest crime area.</p>
-
-<pre><code class="language-python">_.sort_values('incident_num', ascending=False).head(10)
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">_</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></div>
 <div>
 <style>
     .dataframe thead tr:only-child th {
@@ -545,38 +502,29 @@ plot_geo(gpd.GeoDataFrame(_), 'incident_num', &quot;BATTERY calls, 2015 to Aug 2
 </div>
 
 <p>Here is the map excluding the top 5 high crime areas. The excluded areas are omitted completely, shown in white.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Could also get the beats by name. </span>
+<span class="n">pb_beat</span> <span class="o">=</span> <span class="n">beats</span><span class="p">[</span><span class="n">beats</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="sa"></span><span class="s1">&#39;PACIFIC BEACH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">gas_beat</span> <span class="o">=</span> <span class="n">beats</span><span class="p">[</span><span class="n">beats</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="sa"></span><span class="s1">&#39;GASLAMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<pre><code class="language-python"># Could also get the beats by name. 
-pb_beat = beats[beats.name=='PACIFIC BEACH'].index.values[0]
-gas_beat = beats[beats.name=='GASLAMP'].index.values[0]
+<span class="n">low_crime</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">:]</span>
+<span class="n">_lc</span> <span class="o">=</span> <span class="n">_</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">low_crime</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)]</span>
 
-low_crime = _.sort_values('incident_num', ascending=False).iloc[5:]
-_lc = _.loc[list(low_crime.index.values)]
-
-plot_geo(gpd.GeoDataFrame(_lc), 'incident_num', 
-         &quot;BATTERY calls, 2015 to Aug 2017, Lower Crime Areas&quot;)  
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">_lc</span><span class="p">),</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> 
+         <span class="sa"></span><span class="s2">&#34;BATTERY calls, 2015 to Aug 2017, Lower Crime Areas&#34;</span><span class="p">)</span>  </code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_21_0.png" alt="png" /></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">_</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd_calls</span><span class="p">[</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;BATTERY&#39;</span><span class="p">]</span>
+                             <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span>
+                             <span class="o">.</span><span class="n">incident_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+                             <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beats</span><span class="p">))</span>
 
-<pre><code class="language-python">_ = gpd.GeoDataFrame(pd_calls[pd_calls.call_type_desc == 'BATTERY']
-                             .groupby('beat')
-                             .incident_num.count().to_frame()\
-                             .join(beats))
-
-plot_geo(_, 'incident_num', &quot;BATTERY calls, 2015 to Nov 2017&quot;)  
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;BATTERY calls, 2015 to Nov 2017&#34;</span><span class="p">)</span>  </code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_22_0.png" alt="png" /></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">_</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pd_calls</span><span class="p">[</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;MENTAL CASE&#39;</span><span class="p">]</span>
+                             <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;beat&#39;</span><span class="p">)</span>
+                             <span class="o">.</span><span class="n">incident_num</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>\
+                             <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beats</span><span class="p">))</span>
 
-<pre><code class="language-python">_ = gpd.GeoDataFrame(pd_calls[pd_calls.call_type_desc == 'MENTAL CASE']
-                             .groupby('beat')
-                             .incident_num.count().to_frame()\
-                             .join(beats))
-
-plot_geo(_, 'incident_num', &quot;MENTAL CASE calls, 2015 to Aug 2017&quot;)  
-</code></pre>
-
+<span class="n">plot_geo</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;MENTAL CASE calls, 2015 to Aug 2017&#34;</span><span class="p">)</span>  </code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_23_0.png" alt="png" /></p>
 
 <h1 id="rhythm-maps">Rhythm Maps</h1>
@@ -584,44 +532,35 @@ plot_geo(_, 'incident_num', &quot;MENTAL CASE calls, 2015 to Aug 2017&quot;)
 <p>By plotting two time dimensions in a heat map we can often see interesting patterns.</p>
 
 <p>Here we&rsquo;ll look at the rhythm of parties in Pacific Beach, plotting the number of party calls as colors in a maps with an X axis of the day of the week, and a Y axis of the hour of the day. As you&rsquo;d expect, the LOUD PARTY calls are primarily on Friday and Saturday nights.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pb_beat</span> <span class="o">=</span> <span class="n">beats</span><span class="p">[</span><span class="n">beats</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="sa"></span><span class="s1">&#39;PACIFIC BEACH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<pre><code class="language-python">pb_beat = beats[beats.name=='PACIFIC BEACH'].index.values[0]
+<span class="n">_</span> <span class="o">=</span> <span class="n">pd_calls</span><span class="p">[(</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span><span class="o">==</span><span class="sa"></span><span class="s1">&#39;LOUD PARTY&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">beat</span> <span class="o">==</span> <span class="n">pb_beat</span><span class="p">)]</span>
 
-_ = pd_calls[(pd_calls.call_type_desc=='LOUD PARTY') &amp; (pd_calls.beat == pb_beat)]
+<span class="n">ht</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">_</span><span class="p">,</span> 
+                    <span class="n">values</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;incident_num&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;hour&#39;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;dayofweek&#39;</span><span class="p">],</span>
+                    <span class="n">aggfunc</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
 
-ht = pd.pivot_table(data=_, 
-                    values='incident_num', index=['hour'],columns=['dayofweek'],
-                    aggfunc='count')
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
-fig, ax = plt.subplots(figsize=(6,6))
-
-sns.heatmap(ht, ax=ax);
-</code></pre>
-
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span></code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_25_0.png" alt="png" /></p>
 
 <p>Looking at the hour of day versus month, there is a clear seasonal pattern, with fewer loud party calls during the winter.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">pb_beat</span> <span class="o">=</span> <span class="n">beats</span><span class="p">[</span><span class="n">beats</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="sa"></span><span class="s1">&#39;PACIFIC BEACH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<pre><code class="language-python">pb_beat = beats[beats.name=='PACIFIC BEACH'].index.values[0]
-
-_ = pd_calls[(pd_calls.call_type_desc=='LOUD PARTY') &amp; (pd_calls.beat == pb_beat)]
-
+<span class="n">_</span> <span class="o">=</span> <span class="n">pd_calls</span><span class="p">[(</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">call_type_desc</span><span class="o">==</span><span class="sa"></span><span class="s1">&#39;LOUD PARTY&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pd_calls</span><span class="o">.</span><span class="n">beat</span> <span class="o">==</span> <span class="n">pb_beat</span><span class="p">)]</span>
 
 
-fig, ax = plt.subplots(figsize=(8,8))
 
-fig.suptitle(&quot;LOUD PARTY Calls In Pacific Beach\n2015 to Aug 2017\nBy Hour and Month&quot;, fontsize=18);
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
-sns.heatmap(ht, ax=ax);
-</code></pre>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;LOUD PARTY Calls In Pacific Beach</span><span class="se">\n</span><span class="s2">2015 to Aug 2017</span><span class="se">\n</span><span class="s2">By Hour and Month&#34;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span>
 
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span></code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_27_0.png" alt="png" /></p>
-
-<pre><code class="language-python">hm_beats = pd_calls[['beat_name', 'hour','month']].copy()
-hm_beats['count'] = 1
-hm_beats = hm_beats.groupby(['beat_name', 'hour','month']).count().reset_index()
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">hm_beats</span> <span class="o">=</span> <span class="n">pd_calls</span><span class="p">[[</span><span class="sa"></span><span class="s1">&#39;beat_name&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;month&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">hm_beats</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">hm_beats</span> <span class="o">=</span> <span class="n">hm_beats</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="sa"></span><span class="s1">&#39;beat_name&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;hour&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;month&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span></code></pre></div>
 <h1 id="small-multiple-rhythm-maps">Small Multiple Rhythm Maps</h1>
 
 <p>Rhythm maps really shine when they are part of a small multiple grid, or in Seaborn terminology, a Facet Grid. These take a bit more work to setup, but they are really valuable for finding patterns.</p>
@@ -629,35 +568,31 @@ hm_beats = hm_beats.groupby(['beat_name', 'hour','month']).count().reset_index()
 <p>Note how clearly you can see when students go back to school, and the July rowdiness in PB and MB.</p>
 
 <p>But, the really interesting thing is that in many communities, most obviously in San Ysidro, Core-Columbia, Otay Mesa, and a few others, there are a high number of calls are 4:00 in the afternoon. Any ideas?</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Top 16 beats</span>
+<span class="n">top_beats</span><span class="o">=</span> <span class="n">pd_calls</span><span class="o">.</span><span class="n">beat_name</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">16</span><span class="p">]</span>
 
-<pre><code class="language-python">
-# Top 16 beats
-top_beats= pd_calls.beat_name.value_counts().index.values[:16]
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 
-from IPython.display import display
+<span class="c1"># select only the rows for the top 16 beats</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">hm_beats</span><span class="p">[</span><span class="n">hm_beats</span><span class="o">.</span><span class="n">beat_name</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_beats</span><span class="p">)]</span>
 
-# select only the rows for the top 16 beats
-_ = hm_beats[hm_beats.beat_name.isin(top_beats)]
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;beat_name&#34;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
-g = sns.FacetGrid(_, col=&quot;beat_name&quot;, col_wrap=4)
+<span class="k">def</span> <span class="nf">facet_heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>  <span class="n">color</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-def facet_heatmap(data,  color, **kwargs):
+    <span class="n">ht</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;hour&#34;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
 
-    ht = data.pivot(index=&quot;hour&quot;, columns='month', values='count')
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ht</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  
 
-    sns.heatmap(ht, cmap='Reds', **kwargs)  
-
-#cbar_ax = g.fig.add_axes([.92, .3, .02, .4])  # Create a colorbar axes
+<span class="c1">#cbar_ax = g.fig.add_axes([.92, .3, .02, .4])  # Create a colorbar axes</span>
 
     
-with sns.plotting_context(font_scale=3.5):   
-    g = g.map_dataframe(facet_heatmap) 
+<span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">plotting_context</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">3.5</span><span class="p">):</span>   
+    <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">map_dataframe</span><span class="p">(</span><span class="n">facet_heatmap</span><span class="p">)</span> 
     
-plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-g.fig.suptitle(&quot;LOUD PARTY Calls By Month of Year, By Hour of Day, By Beat&quot;,
-              fontsize=18);
-</code></pre>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;LOUD PARTY Calls By Month of Year, By Hour of Day, By Beat&#34;</span><span class="p">,</span>
+              <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span></code></pre></div>
 <p><img src="/img/san-diego-police-calls-for-service/output_30_0.png" alt="png" /></p>
 
   

@@ -1,4 +1,14 @@
 
-p.white-bg-color: {
-    background-color: green; 
+
+
+.chroma {
+    border: 1px solid #cfcfcf;
+    padding: 1em;
+    border-radius: 4px;
+    background: #f7f7f7;
+    line-height: 1.21429em;   
+}
+
+pre, pre code {
+    background: none;
 }

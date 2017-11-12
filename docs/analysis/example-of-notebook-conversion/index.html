@@ -65,7 +65,8 @@
   <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
 
  <link href="/css/custom.css" rel="stylesheet" type="text/css">
-
+ <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+ 
 
   <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
   </script>
@@ -102,36 +103,33 @@
  <p>Metatab has it&rsquo;s own Notebook conversion process, will will create a Metatab package with the notebook, it&rsquo;s Makrdown and HTML conversion, and the dataset it creates. FOr these conversions, input code cells are by default hidden and must be explicitly re-enabled by starting code cells with <code>%showinput</code></p>
 
 <p>The Notebook can include inline Metatab, in a line-oriented format. These cells are code cells and start with a <code>%%metatab</code> magic.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">%%</span><span class="n">metatab</span> 
 
-<pre><code class="language-python">%%metatab 
-
-Identifier: override_this
-Identifier: this_one_too
-Identifier: 7108517a-7163-41a5-943d-961f9a086a3f
-Origin: example.com
-Dataset: foobar.com 
-Name: example.com-foobar.com
+<span class="n">Identifier</span><span class="p">:</span> <span class="n">override_this</span>
+<span class="n">Identifier</span><span class="p">:</span> <span class="n">this_one_too</span>
+<span class="n">Identifier</span><span class="p">:</span> <span class="mi">7108517</span><span class="n">a</span><span class="o">-</span><span class="mi">7163</span><span class="o">-</span><span class="mi">41</span><span class="n">a5</span><span class="o">-</span><span class="mi">943</span><span class="n">d</span><span class="o">-</span><span class="mi">961</span><span class="n">f9a086a3f</span>
+<span class="n">Origin</span><span class="p">:</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Dataset</span><span class="p">:</span> <span class="n">foobar</span><span class="o">.</span><span class="n">com</span> 
+<span class="n">Name</span><span class="p">:</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">-</span><span class="n">foobar</span><span class="o">.</span><span class="n">com</span>
     
-==== Contacts
-Wrangler: Eric Busboom
-Wrangler.Email: eric@civicknowledge.com
-Wrangler.Organization: Civic Knowledge
+<span class="o">====</span> <span class="n">Contacts</span>
+<span class="n">Wrangler</span><span class="p">:</span> <span class="n">Eric</span> <span class="n">Busboom</span>
+<span class="n">Wrangler</span><span class="o">.</span><span class="n">Email</span><span class="p">:</span> <span class="n">eric</span><span class="nd">@civicknowledge.com</span>
+<span class="n">Wrangler</span><span class="o">.</span><span class="n">Organization</span><span class="p">:</span> <span class="n">Civic</span> <span class="n">Knowledge</span>
 
-==== References
-Reference: http://public.source.civicknowledge.com/example.com/sources/renter_cost.csv
-Reference.Name: reference
-Reference.Title: The First Example Data File
-Reference.Startline: 5
-Reference.HeaderLines: 3,4
+<span class="o">====</span> <span class="n">References</span>
+<span class="n">Reference</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">public</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">civicknowledge</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sources</span><span class="o">/</span><span class="n">renter_cost</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Name</span><span class="p">:</span> <span class="n">reference</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Title</span><span class="p">:</span> <span class="n">The</span> <span class="n">First</span> <span class="n">Example</span> <span class="n">Data</span> <span class="n">File</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Startline</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">HeaderLines</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span>
     
-==== Resources
-Datafile: http://public.source.civicknowledge.com/example.com/sources/renter_cost.csv
-Datafile.Name: ext_resource
-Datafile.Title: An Extern CSV Resource
-Datafile.Startline: 5
-Datafile.HeaderLines: 3,4
-</code></pre>
-
+<span class="o">====</span> <span class="n">Resources</span>
+<span class="n">Datafile</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">public</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">civicknowledge</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sources</span><span class="o">/</span><span class="n">renter_cost</span><span class="o">.</span><span class="n">csv</span>
+<span class="n">Datafile</span><span class="o">.</span><span class="n">Name</span><span class="p">:</span> <span class="n">ext_resource</span>
+<span class="n">Datafile</span><span class="o">.</span><span class="n">Title</span><span class="p">:</span> <span class="n">An</span> <span class="n">Extern</span> <span class="n">CSV</span> <span class="n">Resource</span>
+<span class="n">Datafile</span><span class="o">.</span><span class="n">Startline</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">Datafile</span><span class="o">.</span><span class="n">HeaderLines</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span></code></pre></div>
 <p><h2>example.com-foobar.com</h2>
 <p></p></p>
 

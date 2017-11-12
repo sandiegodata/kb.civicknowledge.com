@@ -25,7 +25,7 @@ The presentation will use the San Diego Police 2015 calls for service, but the d
     <item>
       <title> Metapack Access Example</title>
       <link>http://kb.sandiegodata.org/notebooks/metapack-access-example/</link>
-      <pubDate>Sat, 11 Nov 2017 21:00:50 +0000</pubDate>
+      <pubDate>Sat, 11 Nov 2017 22:18:47 +0000</pubDate>
       
       <guid>http://kb.sandiegodata.org/notebooks/metapack-access-example/</guid>
       <description>Metatab is a system for documenting data set metadata, which the program metapack uses to create data packages. You can also us the metapack python module to access data packages from the web, which provides easy access to documentation and pandas data frames in Jupyter notebooks.

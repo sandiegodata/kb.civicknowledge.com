@@ -4,6 +4,9 @@ title = "San Diego Data Knowledge Base"
 theme = "kube"
 publishDir = "../docs"
 
+pygmentsUseClasses=true
+pygmentsCodeFences=true
+
 Paginate = 4
 [Params]
   RSSLink = "/index.xml"

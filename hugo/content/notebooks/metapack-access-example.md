@@ -6,7 +6,7 @@
             "name": "Eric Busboom"
         }
     ],
-    "date": "2017-11-11T21:00:50.207275",
+    "date": "2017-11-11T22:18:47.537790",
     "description": "Examples for opening Metapack packages from a CKAN repository",
     "draft": false,
     "github": "https://github.com/sandiegodata/kb.sandiegodata.org/blob/master/notebooks/tutorial/Metapack%20Access%20Example.ipynb",
