@@ -1,6 +1,6 @@
 +++
 description = "Jupyter Notebooks and Tutorials on Using Public Data"
-title = "Civic Knowledge Base"
+title = "San Diego Data Knowledge Base"
 draft = false
 
 +++
