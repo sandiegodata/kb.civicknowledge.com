@@ -6,7 +6,7 @@
     <description>Recent content on San Diego Data Knowledge Base</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Nov 2017 21:01:56 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2017 21:21:57 +0000</lastBuildDate>
     
 	<atom:link href="http://kb.sandiegodata.org/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,16 @@
       <description>Metatab has it&amp;rsquo;s own Notebook conversion process, will will create a Metatab package with the notebook, it&amp;rsquo;s Makrdown and HTML conversion, and the dataset it creates. FOr these conversions, input code cells are by default hidden and must be explicitly re-enabled by starting code cells with %showinput
 The Notebook can include inline Metatab, in a line-oriented format. These cells are code cells and start with a %%metatab magic.
 %%metatab Identifier: override_this Identifier: this_one_too Identifier: 7108517a-7163-41a5-943d-961f9a086a3f Origin: example.</description>
+    </item>
+    
+    <item>
+      <title> Crime Monthly Rhythm Maps</title>
+      <link>http://kb.sandiegodata.org/notebooks/crime-monthly-rhythm-maps/</link>
+      <pubDate>Sun, 12 Nov 2017 21:21:57 +0000</pubDate>
+      
+      <guid>http://kb.sandiegodata.org/notebooks/crime-monthly-rhythm-maps/</guid>
+      <description>This analysis will examine six years of data that was aggregated by SANDAG and processed by the San Diego Regional Data Library to visualize crime patterns on a weekly and hourly basis. The analysis uses 797,978 crime incidents. The data is published in CSV and shapefile form at the Library&amp;rsquo;s data repository
+These heat maps, also know as rhythm maps, are square grids where each hour of the week is represented by a cell.</description>
     </item>
     
     <item>
