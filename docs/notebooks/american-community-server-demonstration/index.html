@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta name="generator" content="Hugo 0.30.2" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>  American Community Server Demonstration </title>
+
+  
+  <meta name="description" content="A demonstration of how to use American Community Survey data with Metapack."> 
+  
+  
+  
+  
+  
+
+    
+
+  <meta name="author" content="San Diego Regional Data Library">
+
+
+  <meta property="og:title" content=" American Community Server Demonstration" />
+<meta property="og:description" content="A demonstration of how to use American Community Survey data with Metapack." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kb.sandiegodata.org/notebooks/american-community-server-demonstration/" />
+
+
+
+<meta property="article:published_time" content="2017-11-17T22:11:27&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-11-17T22:11:27&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="http://kb.sandiegodata.org/notebooks/american-community-server-demonstration/">  
+
+  <link rel="shortcut icon" type="image/png" href="data:image/png;base64,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RvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3Eld+D/AfhEhmLqHBsfAAAAAElFTkSuQmCC">
+
+
+  <link href="/css/font.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="/css/master.css" rel="stylesheet" type="text/css">
+  <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="/css/custom.css" rel="stylesheet" type="text/css">
+ <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+ 
+
+  <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="/">CKB</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="/" title="home"><img src="/img/logo.png"></a>
+    </div>
+    
+    <h1>San Diego Data Knowledge Base</h1>
+     
+    
+  </div> </header>
+  <main>
+  <div id="main">
+    <div id="hero">
+      <h1>  American Community Server Demonstration </h1>
+      <p class="hero-lead">
+           A demonstration of how to use American Community Survey data with Metapack..
+      </p>
+      
+      <p>
+          <a class="button outline big" href="https://github.com/sandiegodata/notebooks/blob/master/crime/San%20Diego%20Police%20Calls%20For%20Service.ipynb" >View Full Notebook on Github</a>
+      </p>
+      
+
+    </div> 
+    <div id="kube-component" class="content">
+    
+
+    
+
+<p>This tutorial will demonstrate how to use Metapack with data from <a href="http://censusreporter.org">Census Reporter</a> to analyze US Demographics. You will need to install at least these python packages, using pip:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pip install metapack
+pip install publicdata
+pip install seaborn
+pip install geopandas
+pip install pysal</code></pre></div>
+<h1 id="finding-data-in-census-reporter">Finding Data In Census Reporter</h1>
+
+<p>The first step is to visit <a href="http://censusreporter.org">Census Reporter</a> and find the dataset you want to work on. Census Reporter is probably the best search interface for American Community Survey data. You should explore Census Reporter a bit, and when you are ready, enter &ldquo;Sex by Age&rdquo; in the Explore search box. To get to the Sex and Age ducumentatino page.</p>
+
+<p>In the drop down list, select the &ldquo;Sex By Age&rdquo; documentation entry, then look for the link to table B01001</p>
+
+<p><img src="/img/american-community-server-demonstration/output_0_0.png" alt="Screen%20Shot%202017-11-16%20at%203.31.34%20PM.png" /></p>
+
+<p>Click on that link to get to the &ldquo;Table B01001: Sex By Age&rdquo;. In the search box at the top, search for &ldquo;San Diego County&rdquo;. Then, in the side bar on the left, under &ldquo;Divide San Diego County, CA into …&rdquo; click on &ldquo;Census Tracts&rdquo;</p>
+
+<p><img src="/img/american-community-server-demonstration/output_0_1.png" alt="Screen%20Shot%202017-11-16%20at%203.34.46%20PM.png" /></p>
+
+<p>The page should shoudl data for Table B01011, and have columns for a few sensus tracts in San Diego County. Now, we need to extract three values:</p>
+
+<ul>
+<li>The table name, which we already know is &lsquo;B01001&rsquo;</li>
+<li>The Geoid for the enclosing region, San Diego County,</li>
+<li>The Summary Level code for the divisions of the county, which is in this case, Tracts.</li>
+</ul>
+
+<p>Look at the url in the URL bar of your browser, particulary at the end of the URL.</p>
+
+<pre><code>https://..../?table=B01001&amp;geo_ids=05000US06073,140|05000US06073&amp;primary_geo_id=05000US06073
+</code></pre>
+
+<p>The table name is after <code>table=</code>, the value is <code>B01001</code>. The next part of the URL, <code>geo_ids=05000US06073,140</code>. The long string, <code>05000US06073</code> is the geoid of San Diego County. ( &lsquo;050&rsquo; is for counties, &lsquo;06&rsquo; is California, and &lsquo;073&rsquo; is San Diego County ). After the comma is the summary level of tracts, &lsquo;140&rsquo;.</p>
+
+<p>So, here are the important values we&rsquo;ll need for the next section:</p>
+
+<ul>
+<li>Table: <strong>B01001</strong></li>
+<li>Geoid: <strong>05000US06073</strong></li>
+<li>Summary Level: <strong>140</strong></li>
+</ul>
+
+<p>Now we can get started on the rest of the notebook. First, the standard includes. Note the <code>%load_ext metapack</code> extension loading magic. We&rsquo;ll need this for some of the Metapack features.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">%</span><span class="n">load_ext</span> <span class="n">metapack</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="kn">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">metapack</span> <span class="kn">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">color_codes</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></code></pre></div>
+<h1 id="metapack">Metapack</h1>
+
+<p><a href="https://github.com/Metatab/metapack">Metapack</a> is a data packaging system built on <a href="http://metatab.org">Metatab</a>. Normally, the configuration for Metapack is tored in a .csv file, but it can also be included in a Jupyter notebook. Here is what it looks like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">%%</span><span class="n">metatab</span>
+
+<span class="n">Identifier</span><span class="p">:</span> <span class="n">e14510ec</span><span class="o">-</span><span class="mi">57</span><span class="n">b3</span><span class="o">-</span><span class="mi">4</span><span class="n">fae</span><span class="o">-</span><span class="mi">8</span><span class="n">c4e</span><span class="o">-</span><span class="n">c47ca7c6b55b</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">sandiegodata</span><span class="o">.</span><span class="n">org</span><span class="o">-</span><span class="n">acs_demo</span><span class="o">-</span><span class="mi">1</span>
+    
+<span class="n">Dataset</span><span class="p">:</span> <span class="n">acs_demo</span>
+<span class="n">Origin</span><span class="p">:</span> <span class="n">sandiegodata</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="n">Section</span><span class="p">:</span> <span class="n">Contacts</span>
+<span class="n">Wrangler</span><span class="p">:</span> <span class="n">Eric</span> <span class="n">Busboom</span>
+<span class="n">Wrangler</span><span class="o">.</span><span class="n">Email</span><span class="p">:</span> <span class="n">eric</span><span class="nd">@civicknowledge.com</span>
+<span class="n">Wrangler</span><span class="o">.</span><span class="n">Organization</span><span class="p">:</span> <span class="n">Civic</span> <span class="n">Knowledge</span></code></pre></div>
+<p>This file just establishes identity and contact information, but it also creates a new variable in the namespace, <code>mt_pkg</code>, which you can display to see what information is being included in the package.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">mt_pkg</span></code></pre></div>
+<p><h2>sandiegodata.org-acs_demo-1</h2>
+<p></p></p>
+
+<p></p>
+
+<p><h3>Contacts</h3>
+<p><strong>Wrangler:</strong> <a href="mailto:eric@civicknowledge.com">Eric Busboom</a> </p>
+</ol></p>
+
+<h2 id="adding-resources">Adding Resources</h2>
+
+<p>Now we can add resources to the Metatab file, so we can get a handle on the Census Reporter data. Remember the dataq we extracted from the Census Reporter web page:</p>
+
+<p>Table: B01001
+Geoid: 05000US06073
+Summary Level: 140</p>
+
+<p>This information can be used to construct a census reporter URL that Metatab can use to get the data via the Census Reporter API. The format of the URLS are <code>censusreporter:&lt;table&gt;/&lt;summarylevel&gt;/&lt;geoid&gt;</code>, so our url will be:</p>
+
+<pre><code>censusreporter:B01001/140/05000US06073
+</code></pre>
+
+<p>Most of the time when you are using a lot of ACS data, all of it will be at the same level in the same geography, so you&rsquo;ll use cut-and-paste these urls, changing only the table name.</p>
+
+<p>Now, add this URL into the reference section of the Metatab document:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">%%</span><span class="n">metatab</span>
+<span class="n">Section</span><span class="p">:</span> <span class="n">Resources</span>
+
+
+<span class="n">Reference</span><span class="p">:</span> <span class="n">censusreporter</span><span class="p">:</span><span class="n">B01001</span><span class="o">/</span><span class="mi">140</span><span class="o">/</span><span class="mo">05000</span><span class="n">US06073</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Name</span><span class="p">:</span> <span class="n">B01001</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Description</span><span class="p">:</span> <span class="n">Table</span> <span class="n">B01001</span><span class="p">:</span> <span class="n">Sex</span> <span class="n">by</span> <span class="n">Age</span>
+
+<span class="n">Reference</span><span class="p">:</span> <span class="n">censusreportergeo</span><span class="p">:</span><span class="o">//</span><span class="n">B01003</span><span class="o">/</span><span class="mi">140</span><span class="o">/</span><span class="mo">05000</span><span class="n">US06073</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Name</span><span class="p">:</span> <span class="n">tracts_cr</span>
+<span class="n">Reference</span><span class="o">.</span><span class="n">Description</span><span class="p">:</span> <span class="n">Geo</span> <span class="k">for</span> <span class="n">tracts</span><span class="p">,</span> <span class="kn">from</span> <span class="nn">census</span> <span class="nn">reporter</span></code></pre></div>
+<p>Note that we also added a second resource, with the same path but a different scheme. This is a URL for the geographic boundaries of all of the tracts in San Diego County. The path also has a table in it, <code>B01003</code>, which is the table for Total Population. That table was chosen because it&rsquo;s the smallest one, and we are not going to use the table information the Census Reporter includes with the geo information, but we could have also used just a geo url for table <code>B01001</code> and gotten the trace estimate numbers from it.</p>
+
+<p>Now, if we look at the package again, it will have the new references we added:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">mt_pkg</span></code></pre></div>
+<p><h2>sandiegodata.org-acs_demo-1</h2>
+<p></p></p>
+
+<p></p>
+
+<p><h3>Contacts</h3>
+<p><strong>Wrangler:</strong> <a href="mailto:eric@civicknowledge.com">Eric Busboom</a> </p>
+<h3>Resources</h3>
+<p><ol>
+<li><p><strong>B01001</strong> - <a target="_blank" href="censusreporter://B01001/140/05000US06073">censusreporter://B01001/140/05000US06073</a> Table B01001: Sex by Age</p></li>
+<li><p><strong>tracts_cr</strong> - <a target="_blank" href="censusreportergeo://B01003/140/05000US06073">censusreportergeo://B01003/140/05000US06073</a> Geo for tracts, from census reporter</p></li>
+</ol></p>
+</ol></p>
+
+<p>Now we can get the resource from the  data package and inspect it in Jupyter:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">B01001_r</span> <span class="o">=</span> <span class="n">mt_pkg</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;B01001&#39;</span><span class="p">)</span>
+<span class="n">B01001</span> <span class="o">=</span> <span class="n">B01001_r</span><span class="o">.</span><span class="n">dataframe</span><span class="p">()</span>
+<span class="n">B01001</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">6</span><span class="p">,:</span><span class="mi">6</span><span class="p">]</span> <span class="c1"># Show 6 rows and 6 columns</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geoid</th>
+      <th>name</th>
+      <th>B01001001</th>
+      <th>B01001001_m90</th>
+      <th>B01001002</th>
+      <th>B01001002_m90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14000US06073000100</td>
+      <td>Census Tract 1, San Diego, CA</td>
+      <td>2716.0</td>
+      <td>206.0</td>
+      <td>1251.0</td>
+      <td>162.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14000US06073000201</td>
+      <td>Census Tract 2.01, San Diego, CA</td>
+      <td>2223.0</td>
+      <td>260.0</td>
+      <td>921.0</td>
+      <td>121.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14000US06073000202</td>
+      <td>Census Tract 2.02, San Diego, CA</td>
+      <td>4683.0</td>
+      <td>398.0</td>
+      <td>2323.0</td>
+      <td>253.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>14000US06073000300</td>
+      <td>Census Tract 3, San Diego, CA</td>
+      <td>4875.0</td>
+      <td>417.0</td>
+      <td>2642.0</td>
+      <td>320.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14000US06073000400</td>
+      <td>Census Tract 4, San Diego, CA</td>
+      <td>3606.0</td>
+      <td>272.0</td>
+      <td>2290.0</td>
+      <td>267.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>14000US06073000500</td>
+      <td>Census Tract 5, San Diego, CA</td>
+      <td>2873.0</td>
+      <td>242.0</td>
+      <td>1558.0</td>
+      <td>205.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Note that the table we get back has a geoid for each tract ( with &lsquo;140&rsquo; in front to indicate Tracts, and &lsquo;06073&rsquo; in the middle, for San Diego County, California ) Also, there are columns with names for variables ( <code>B01001001</code> ) and also columns for margin-of-errors for those estimates ( <code>B01001001_m90</code>). The Census Repoter provides a lot of features for manipulating these parts of the data frame.</p>
+
+<h1 id="census-data-frames">Census Data Frames</h1>
+
+<p>The CensusReporter package returns, via the <code>.dataframe()</code> method,  a subclass of dataframes,  <code>CensusDataFrame</code>, that has a few special methods and properties for manipulating census data.</p>
+
+<p>The core feature of these dataframes is that when you index with an array with column names, you will also get the margin columns.</p>
+
+<p>There are also a few special methods that perform operations on estimates and the margins:</p>
+
+<ul>
+<li><code>sum_m</code>. Sum several columns and their margins.</li>
+<li><code>add_sum_m</code>. Like <code>sum_m</code> but also adds the summed values and margins back into the dataframe</li>
+<li><code>sum_col_range</code> Like <code>sum_m</code>, but takes a starting and ending column, and sums the range of columns.</li>
+<li><code>add_rse</code> computes the Relative Standard Error and adds a new column to the dataframe.</li>
+<li><code>ratio</code> Compute a ratio between two column values, also computing the margin. In a ratio, one value is not a subset of the other, such as Males to Females. A ratio can be greater than 1.</li>
+<li><code>proportion</code> Compute a proportion between two column values, also computing the margin. In a proportion, the numerator is a subset of the denominator, such as Males to the whole population. A proportion must be 1 or less.</li>
+</ul>
+
+<p>One of the first things you&rsquo;ll notice is that from looking at the dataframe, you have no idea what the columns are for. You can use the &lsquo;.titles&rsquo; property to get the dataframe with column renamed with more detailed descriptions. ( Note that this view of the table is transposed, so the column names are easier to read )</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">B01001</span><span class="o">.</span><span class="n">titles</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>geoid</th>
+      <td>14000US06073000100</td>
+      <td>14000US06073000201</td>
+      <td>14000US06073000202</td>
+      <td>14000US06073000300</td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>B01001001 Total</th>
+      <td>2716</td>
+      <td>2223</td>
+      <td>4683</td>
+      <td>4875</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001001 Total</th>
+      <td>206</td>
+      <td>260</td>
+      <td>398</td>
+      <td>417</td>
+    </tr>
+    <tr>
+      <th>B01001002 Total Male</th>
+      <td>1251</td>
+      <td>921</td>
+      <td>2323</td>
+      <td>2642</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001002 Total Male</th>
+      <td>162</td>
+      <td>121</td>
+      <td>253</td>
+      <td>320</td>
+    </tr>
+    <tr>
+      <th>B01001003 Total Male Under 5 years</th>
+      <td>53</td>
+      <td>54</td>
+      <td>115</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001003 Total Male Under 5 years</th>
+      <td>39</td>
+      <td>53</td>
+      <td>84</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>B01001004 Total Male 5 to 9 years</th>
+      <td>64</td>
+      <td>56</td>
+      <td>54</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001004 Total Male 5 to 9 years</th>
+      <td>43</td>
+      <td>31</td>
+      <td>42</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>If there are a lot of columns, it is often convient to search through the column titles. The <code>.search_columns()</code> method allows you to do that. Each of the arguments to the method can be either a string or a regular expression.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">B01001</span><span class="o">.</span><span class="n">search_columns</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39; 35 &#39;</span><span class="p">,</span><span class="n">re</span><span class="o">.</span><span class="nb">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;2\d years&#39;</span><span class="p">))</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>code</th>
+      <th>title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>B01001013</td>
+      <td>B01001013 Total Male 35 to 39 years</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>B01001013_m90</td>
+      <td>Margins for B01001013 Total Male 35 to 39 years</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B01001037</td>
+      <td>B01001037 Total Female 35 to 39 years</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B01001037_m90</td>
+      <td>Margins for B01001037 Total Female 35 to 39 years</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>B01001008</td>
+      <td>B01001008 Total Male 20 years</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>B01001008_m90</td>
+      <td>Margins for B01001008 Total Male 20 years</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>B01001009</td>
+      <td>B01001009 Total Male 21 years</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>B01001009_m90</td>
+      <td>Margins for B01001009 Total Male 21 years</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>B01001010</td>
+      <td>B01001010 Total Male 22 to 24 years</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>B01001010_m90</td>
+      <td>Margins for B01001010 Total Male 22 to 24 years</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>B01001011</td>
+      <td>B01001011 Total Male 25 to 29 years</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>B01001011_m90</td>
+      <td>Margins for B01001011 Total Male 25 to 29 years</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>B01001032</td>
+      <td>B01001032 Total Female 20 years</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>B01001032_m90</td>
+      <td>Margins for B01001032 Total Female 20 years</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>B01001033</td>
+      <td>B01001033 Total Female 21 years</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>B01001033_m90</td>
+      <td>Margins for B01001033 Total Female 21 years</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>B01001034</td>
+      <td>B01001034 Total Female 22 to 24 years</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>B01001034_m90</td>
+      <td>Margins for B01001034 Total Female 22 to 24 years</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>B01001035</td>
+      <td>B01001035 Total Female 25 to 29 years</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>B01001035_m90</td>
+      <td>Margins for B01001035 Total Female 25 to 29 years</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>An important feature of the <code>CensusDataFrame</code> is that when you index columns with an array, the dataframe will expand the array to also return the margin columns:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span> <span class="o">=</span> <span class="n">B01001</span><span class="p">[[</span><span class="sa"></span><span class="s1">&#39;B01001001&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;B01001002&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B01001001</th>
+      <th>B01001001_m90</th>
+      <th>B01001002</th>
+      <th>B01001002_m90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2716.0</td>
+      <td>206.0</td>
+      <td>1251.0</td>
+      <td>162.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2223.0</td>
+      <td>260.0</td>
+      <td>921.0</td>
+      <td>121.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4683.0</td>
+      <td>398.0</td>
+      <td>2323.0</td>
+      <td>253.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4875.0</td>
+      <td>417.0</td>
+      <td>2642.0</td>
+      <td>320.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3606.0</td>
+      <td>272.0</td>
+      <td>2290.0</td>
+      <td>267.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h1 id="creating-summary-variables">Creating Summary Variables</h1>
+
+<p>One of the most frequent operations on Census data is to sum columns. First, we will select a subset of the columns.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sa"></span><span class="s1">&#39;geoid&#39;</span><span class="p">,</span>
+    <span class="sa"></span><span class="s1">&#39;B01001001&#39;</span><span class="p">,</span> <span class="c1"># Total Population</span>
+    <span class="sa"></span><span class="s1">&#39;B01001002&#39;</span><span class="p">,</span> <span class="c1"># Total Male</span>
+    <span class="sa"></span><span class="s1">&#39;B01001026&#39;</span> <span class="p">,</span> <span class="c1"># Total Female</span>
+    <span class="sa"></span><span class="s1">&#39;B01001013&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;B01001014&#39;</span><span class="p">,</span> <span class="c1"># Males, 35-39 and 40-44</span>
+    <span class="sa"></span><span class="s1">&#39;B01001037&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;B01001038&#39;</span> <span class="c1"># Female, 35-39 and 40-44</span>
+<span class="p">]</span>
+
+
+<span class="n">B01001s</span> <span class="o">=</span> <span class="n">B01001</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">B01001s</span><span class="o">.</span><span class="n">titles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>geoid</th>
+      <td>14000US06073000100</td>
+      <td>14000US06073000201</td>
+      <td>14000US06073000202</td>
+      <td>14000US06073000300</td>
+      <td>14000US06073000400</td>
+    </tr>
+    <tr>
+      <th>B01001001 Total</th>
+      <td>2716</td>
+      <td>2223</td>
+      <td>4683</td>
+      <td>4875</td>
+      <td>3606</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001001 Total</th>
+      <td>206</td>
+      <td>260</td>
+      <td>398</td>
+      <td>417</td>
+      <td>272</td>
+    </tr>
+    <tr>
+      <th>B01001002 Total Male</th>
+      <td>1251</td>
+      <td>921</td>
+      <td>2323</td>
+      <td>2642</td>
+      <td>2290</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001002 Total Male</th>
+      <td>162</td>
+      <td>121</td>
+      <td>253</td>
+      <td>320</td>
+      <td>267</td>
+    </tr>
+    <tr>
+      <th>B01001026 Total Female</th>
+      <td>1465</td>
+      <td>1302</td>
+      <td>2360</td>
+      <td>2233</td>
+      <td>1316</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001026 Total Female</th>
+      <td>116</td>
+      <td>242</td>
+      <td>357</td>
+      <td>336</td>
+      <td>224</td>
+    </tr>
+    <tr>
+      <th>B01001013 Total Male 35 to 39 years</th>
+      <td>76</td>
+      <td>39</td>
+      <td>251</td>
+      <td>212</td>
+      <td>367</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001013 Total Male 35 to 39 years</th>
+      <td>58</td>
+      <td>34</td>
+      <td>151</td>
+      <td>111</td>
+      <td>147</td>
+    </tr>
+    <tr>
+      <th>B01001014 Total Male 40 to 44 years</th>
+      <td>80</td>
+      <td>101</td>
+      <td>140</td>
+      <td>399</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001014 Total Male 40 to 44 years</th>
+      <td>43</td>
+      <td>57</td>
+      <td>90</td>
+      <td>162</td>
+      <td>133</td>
+    </tr>
+    <tr>
+      <th>B01001037 Total Female 35 to 39 years</th>
+      <td>143</td>
+      <td>21</td>
+      <td>97</td>
+      <td>155</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001037 Total Female 35 to 39 years</th>
+      <td>60</td>
+      <td>19</td>
+      <td>71</td>
+      <td>90</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>B01001038 Total Female 40 to 44 years</th>
+      <td>99</td>
+      <td>84</td>
+      <td>84</td>
+      <td>71</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001038 Total Female 40 to 44 years</th>
+      <td>61</td>
+      <td>74</td>
+      <td>60</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Now we can sum the male and female columns and compute some ratios. First, sum the columns. Note that the sum_m() method returns both the summed estimate, and the summed margin, which are re-assigned back in to the data frame.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;male_35_44&#39;</span><span class="p">],</span> <span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;male_35_44_m90&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">B01001s</span><span class="o">.</span><span class="n">sum_m</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;B01001013&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;B01001014&#39;</span><span class="p">)</span>
+<span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;female_35_44&#39;</span><span class="p">],</span> <span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;female_35_44_m90&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">B01001s</span><span class="o">.</span><span class="n">sum_m</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;B01001037&#39;</span><span class="p">,</span> <span class="sa"></span><span class="s1">&#39;B01001038&#39;</span><span class="p">)</span>
+<span class="n">B01001s</span><span class="o">.</span><span class="n">titles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>geoid</th>
+      <td>14000US06073000100</td>
+      <td>14000US06073000201</td>
+      <td>14000US06073000202</td>
+      <td>14000US06073000300</td>
+      <td>14000US06073000400</td>
+    </tr>
+    <tr>
+      <th>B01001001 Total</th>
+      <td>2716</td>
+      <td>2223</td>
+      <td>4683</td>
+      <td>4875</td>
+      <td>3606</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001001 Total</th>
+      <td>206</td>
+      <td>260</td>
+      <td>398</td>
+      <td>417</td>
+      <td>272</td>
+    </tr>
+    <tr>
+      <th>B01001002 Total Male</th>
+      <td>1251</td>
+      <td>921</td>
+      <td>2323</td>
+      <td>2642</td>
+      <td>2290</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001002 Total Male</th>
+      <td>162</td>
+      <td>121</td>
+      <td>253</td>
+      <td>320</td>
+      <td>267</td>
+    </tr>
+    <tr>
+      <th>B01001026 Total Female</th>
+      <td>1465</td>
+      <td>1302</td>
+      <td>2360</td>
+      <td>2233</td>
+      <td>1316</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001026 Total Female</th>
+      <td>116</td>
+      <td>242</td>
+      <td>357</td>
+      <td>336</td>
+      <td>224</td>
+    </tr>
+    <tr>
+      <th>B01001013 Total Male 35 to 39 years</th>
+      <td>76</td>
+      <td>39</td>
+      <td>251</td>
+      <td>212</td>
+      <td>367</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001013 Total Male 35 to 39 years</th>
+      <td>58</td>
+      <td>34</td>
+      <td>151</td>
+      <td>111</td>
+      <td>147</td>
+    </tr>
+    <tr>
+      <th>B01001014 Total Male 40 to 44 years</th>
+      <td>80</td>
+      <td>101</td>
+      <td>140</td>
+      <td>399</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001014 Total Male 40 to 44 years</th>
+      <td>43</td>
+      <td>57</td>
+      <td>90</td>
+      <td>162</td>
+      <td>133</td>
+    </tr>
+    <tr>
+      <th>B01001037 Total Female 35 to 39 years</th>
+      <td>143</td>
+      <td>21</td>
+      <td>97</td>
+      <td>155</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001037 Total Female 35 to 39 years</th>
+      <td>60</td>
+      <td>19</td>
+      <td>71</td>
+      <td>90</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>B01001038 Total Female 40 to 44 years</th>
+      <td>99</td>
+      <td>84</td>
+      <td>84</td>
+      <td>71</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>Margins for B01001038 Total Female 40 to 44 years</th>
+      <td>61</td>
+      <td>74</td>
+      <td>60</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>male_35_44</th>
+      <td>156</td>
+      <td>140</td>
+      <td>391</td>
+      <td>611</td>
+      <td>565</td>
+    </tr>
+    <tr>
+      <th>male_35_44_m90</th>
+      <td>72.2011</td>
+      <td>66.3702</td>
+      <td>175.787</td>
+      <td>196.38</td>
+      <td>198.237</td>
+    </tr>
+    <tr>
+      <th>female_35_44</th>
+      <td>242</td>
+      <td>105</td>
+      <td>181</td>
+      <td>226</td>
+      <td>211</td>
+    </tr>
+    <tr>
+      <th>female_35_44_m90</th>
+      <td>85.5628</td>
+      <td>76.4003</td>
+      <td>92.957</td>
+      <td>105.475</td>
+      <td>107.838</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Not only is the DataFrame class a special subclass, but so is the series. From an estimate columns, the <code>.m90</code> property returns the corresponding 90% margin column.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;B01001038&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">m90</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span></code></pre></div>
+<pre><code>48990.0
+</code></pre>
+
+<p>The Series object also has methods for :</p>
+
+<ul>
+<li>95% margin: <code>.m95</code></li>
+<li>99% margin: <code>.m99</code></li>
+<li>Relative standard error: <code>.rse</code></li>
+<li>Standard error: <code>.se</code></li>
+<li>Summing the series: <code>.sum_m90()</code></li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;m_ratio&#39;</span><span class="p">],</span><span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;m_ratio_m90&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">B01001s</span><span class="o">.</span><span class="n">ratio</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;male_35_44&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;B01001002&#39;</span><span class="p">)</span>
+<span class="n">B01001s</span><span class="o">.</span><span class="n">add_rse</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;m_ratio&#39;</span><span class="p">)</span>
+<span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;mf_proportion&#39;</span><span class="p">],</span><span class="n">B01001s</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;mf_proportion_m90&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">B01001s</span><span class="o">.</span><span class="n">proportion</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;male_35_44&#39;</span><span class="p">,</span><span class="sa"></span><span class="s1">&#39;female_35_44&#39;</span><span class="p">)</span>
+<span class="n">B01001s</span><span class="o">.</span><span class="n">add_rse</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;mf_proportion&#39;</span><span class="p">);</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">B01001s</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">T</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>geoid</th>
+      <td>14000US06073000100</td>
+      <td>14000US06073000201</td>
+      <td>14000US06073000202</td>
+      <td>14000US06073000300</td>
+      <td>14000US06073000400</td>
+    </tr>
+    <tr>
+      <th>B01001001</th>
+      <td>2716</td>
+      <td>2223</td>
+      <td>4683</td>
+      <td>4875</td>
+      <td>3606</td>
+    </tr>
+    <tr>
+      <th>B01001001_m90</th>
+      <td>206</td>
+      <td>260</td>
+      <td>398</td>
+      <td>417</td>
+      <td>272</td>
+    </tr>
+    <tr>
+      <th>B01001002</th>
+      <td>1251</td>
+      <td>921</td>
+      <td>2323</td>
+      <td>2642</td>
+      <td>2290</td>
+    </tr>
+    <tr>
+      <th>B01001002_m90</th>
+      <td>162</td>
+      <td>121</td>
+      <td>253</td>
+      <td>320</td>
+      <td>267</td>
+    </tr>
+    <tr>
+      <th>B01001026</th>
+      <td>1465</td>
+      <td>1302</td>
+      <td>2360</td>
+      <td>2233</td>
+      <td>1316</td>
+    </tr>
+    <tr>
+      <th>B01001026_m90</th>
+      <td>116</td>
+      <td>242</td>
+      <td>357</td>
+      <td>336</td>
+      <td>224</td>
+    </tr>
+    <tr>
+      <th>B01001013</th>
+      <td>76</td>
+      <td>39</td>
+      <td>251</td>
+      <td>212</td>
+      <td>367</td>
+    </tr>
+    <tr>
+      <th>B01001013_m90</th>
+      <td>58</td>
+      <td>34</td>
+      <td>151</td>
+      <td>111</td>
+      <td>147</td>
+    </tr>
+    <tr>
+      <th>B01001014</th>
+      <td>80</td>
+      <td>101</td>
+      <td>140</td>
+      <td>399</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>B01001014_m90</th>
+      <td>43</td>
+      <td>57</td>
+      <td>90</td>
+      <td>162</td>
+      <td>133</td>
+    </tr>
+    <tr>
+      <th>B01001037</th>
+      <td>143</td>
+      <td>21</td>
+      <td>97</td>
+      <td>155</td>
+      <td>155</td>
+    </tr>
+    <tr>
+      <th>B01001037_m90</th>
+      <td>60</td>
+      <td>19</td>
+      <td>71</td>
+      <td>90</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>B01001038</th>
+      <td>99</td>
+      <td>84</td>
+      <td>84</td>
+      <td>71</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>B01001038_m90</th>
+      <td>61</td>
+      <td>74</td>
+      <td>60</td>
+      <td>55</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>male_35_44</th>
+      <td>156</td>
+      <td>140</td>
+      <td>391</td>
+      <td>611</td>
+      <td>565</td>
+    </tr>
+    <tr>
+      <th>male_35_44_m90</th>
+      <td>72.2011</td>
+      <td>66.3702</td>
+      <td>175.787</td>
+      <td>196.38</td>
+      <td>198.237</td>
+    </tr>
+    <tr>
+      <th>female_35_44</th>
+      <td>242</td>
+      <td>105</td>
+      <td>181</td>
+      <td>226</td>
+      <td>211</td>
+    </tr>
+    <tr>
+      <th>female_35_44_m90</th>
+      <td>85.5628</td>
+      <td>76.4003</td>
+      <td>92.957</td>
+      <td>105.475</td>
+      <td>107.838</td>
+    </tr>
+    <tr>
+      <th>m_ratio</th>
+      <td>0.1247</td>
+      <td>0.152009</td>
+      <td>0.168317</td>
+      <td>0.231264</td>
+      <td>0.246725</td>
+    </tr>
+    <tr>
+      <th>m_ratio_m90</th>
+      <td>0.0599312</td>
+      <td>0.0747792</td>
+      <td>0.0778611</td>
+      <td>0.0794327</td>
+      <td>0.091221</td>
+    </tr>
+    <tr>
+      <th>m_ratio_rse</th>
+      <td>29.216</td>
+      <td>29.9052</td>
+      <td>28.1207</td>
+      <td>20.8797</td>
+      <td>22.4758</td>
+    </tr>
+    <tr>
+      <th>mf_proportion</th>
+      <td>0.644628</td>
+      <td>1.33333</td>
+      <td>2.16022</td>
+      <td>2.70354</td>
+      <td>2.67773</td>
+    </tr>
+    <tr>
+      <th>mf_proportion_m90</th>
+      <td>0.192528</td>
+      <td>1.15791</td>
+      <td>1.47447</td>
+      <td>1.53202</td>
+      <td>1.65999</td>
+    </tr>
+    <tr>
+      <th>mf_proportion_rse</th>
+      <td>18.1559</td>
+      <td>52.7924</td>
+      <td>41.4928</td>
+      <td>34.448</td>
+      <td>37.6854</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h1 id="joining-in-geographic-information">Joining in geographic information</h1>
+
+<p>Now that we have the tract estimates that we want, its time to link them into a map. We&rsquo;ll use a similar method to get a dataframe for the geographic resoruce, but then use the <code>.geo</code> property to convert it to a GeoPandas dataframe, which has special support for geographic manipulations. Also note that we&rsquo;ll set the index to &lsquo;geoid&rsquo;, which is important for joining to our tract sex estimates table.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">tracts</span> <span class="o">=</span> <span class="n">mt_pkg</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;tracts_cr&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;geoid&#39;</span><span class="p">)</span></code></pre></div>
+<p>The result is a GeoPandas dataframe, which has WKT geography data in the <code>geometry</code> columns, along with the &ldquo;total population&rdquo; estimates that came along with the data request.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">tracts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></code></pre></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>B01003001</th>
+      <th>B01003001e</th>
+      <th>geometry</th>
+    </tr>
+    <tr>
+      <th>geoid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14000US06073000100</th>
+      <td>0</td>
+      <td>Census Tract 1, San Diego, CA</td>
+      <td>2716.0</td>
+      <td>206.0</td>
+      <td>POLYGON ((-117.194904 32.75278, -117.19471 32....</td>
+    </tr>
+    <tr>
+      <th>14000US06073000201</th>
+      <td>1</td>
+      <td>Census Tract 2.01, San Diego, CA</td>
+      <td>2223.0</td>
+      <td>260.0</td>
+      <td>POLYGON ((-117.178867 32.75765, -117.177966 32...</td>
+    </tr>
+    <tr>
+      <th>14000US06073000202</th>
+      <td>2</td>
+      <td>Census Tract 2.02, San Diego, CA</td>
+      <td>4683.0</td>
+      <td>398.0</td>
+      <td>POLYGON ((-117.184043 32.74571, -117.183827 32...</td>
+    </tr>
+    <tr>
+      <th>14000US06073000300</th>
+      <td>3</td>
+      <td>Census Tract 3, San Diego, CA</td>
+      <td>4875.0</td>
+      <td>417.0</td>
+      <td>POLYGON ((-117.168645 32.748968, -117.168404 3...</td>
+    </tr>
+    <tr>
+      <th>14000US06073000400</th>
+      <td>4</td>
+      <td>Census Tract 4, San Diego, CA</td>
+      <td>3606.0</td>
+      <td>272.0</td>
+      <td>POLYGON ((-117.170867 32.75865, -117.170187 32...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The GeoPandas dataframe has a <code>.plot</code> method that will create a map of the geo data.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">tracts</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span></code></pre></div>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x114ee4390&gt;
+</code></pre>
+
+<p><img src="/img/american-community-server-demonstration/output_32_1.png" alt="png" /></p>
+
+<p>And, it has some features for selecting which colum from the dataframe to use to create a choroplethmap.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">tracts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;B01003001&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span><span class="n">scheme</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">)</span></code></pre></div>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11582e860&gt;
+</code></pre>
+
+<p><img src="/img/american-community-server-demonstration/output_34_1.png" alt="png" /></p>
+
+<p>Now, we can join the previous ACS dataframe into the tracts, and plot it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">tracts</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">B01001s</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;geoid&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;m_ratio&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;B01003001&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span><span class="n">scheme</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">True</span>
+<span class="p">)</span></code></pre></div>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x115886ba8&gt;
+</code></pre>
+
+<p><img src="/img/american-community-server-demonstration/output_36_1.png" alt="png" /></p>
+
+<p>That plot is a bit small, but we can explicitly define the matplotlib axis and figure, and then set the size.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">tracts</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">B01001s</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="sa"></span><span class="s1">&#39;geoid&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="sa"></span><span class="s1">&#39;m_ratio&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;m_ratio&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span><span class="n">scheme</span><span class="o">=</span><span class="sa"></span><span class="s1">&#39;fisher_jenks&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">True</span>
+<span class="p">)</span></code></pre></div>
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x115942320&gt;
+</code></pre>
+
+<p><img src="/img/american-community-server-demonstration/output_38_1.png" alt="png" /></p>
+
+<p>And that&rsquo;s how you analyze ACS data with Metapack.</p>
+
+
+    
+    </div>
+    </div>
+</main>
+  <footer></footer>
+
+
+  <script src="/js/kube.js" type="text/javascript">
+  </script>
+  <script src="/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>

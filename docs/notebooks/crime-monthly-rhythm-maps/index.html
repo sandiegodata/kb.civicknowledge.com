@@ -6,10 +6,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> San Diego Data Knowledge Base </title>
+  <title>  Crime Monthly Rhythm Maps </title>
 
   
-  <meta name="description" content="Jupyter Notebooks and Tutorials on Using Public Data"> 
+  <meta name="description" content="Rhythm maps for San Diego Crime incidents, from 2007 to 2014"> 
   
   
   
@@ -21,14 +21,17 @@
   <meta name="author" content="San Diego Regional Data Library">
 
 
-  <meta property="og:title" content="San Diego Data Knowledge Base" />
-<meta property="og:description" content="Jupyter Notebooks and Tutorials on Using Public Data" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://kb.sandiegodata.org/" />
+  <meta property="og:title" content=" Crime Monthly Rhythm Maps" />
+<meta property="og:description" content="Rhythm maps for San Diego Crime incidents, from 2007 to 2014" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kb.sandiegodata.org/notebooks/crime-monthly-rhythm-maps/" />
 
 
 
-<meta property="og:updated_time" content="2017-11-12T21:21:57&#43;00:00"/>
+<meta property="article:published_time" content="2017-11-12T21:21:57&#43;00:00"/>
+
+<meta property="article:modified_time" content="2017-11-12T21:21:57&#43;00:00"/>
+
 
 
 
@@ -45,17 +48,12 @@
 
 
   
-   
-
-
-
- 
   
   
   
-  <link href="http://kb.sandiegodata.org/index.xml" rel="alternate" type="application/rss+xml" title="San Diego Data Knowledge Base" /> 
+  
 
-  <link rel="canonical" href="http://kb.sandiegodata.org/">  
+  <link rel="canonical" href="http://kb.sandiegodata.org/notebooks/crime-monthly-rhythm-maps/">  
 
   <link rel="shortcut icon" type="image/png" href="data:image/png;base64,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RvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3EldwAAAAAAAJJjRvlaOwAAAAAAALXmk3Eld+D/AfhEhmLqHBsfAAAAAElFTkSuQmCC">
 
@@ -68,6 +66,8 @@
   <link href="/css/kube.demo.css" rel="stylesheet" type="text/css">
 
  <link href="/css/custom.css" rel="stylesheet" type="text/css">
+ <link href="/css/syntax.css" rel="stylesheet" type="text/css">
+ 
 
   <script src="/js/jquery-2.1.4.min.js" type="text/javascript">
   </script>
@@ -94,120 +94,321 @@
     
   </div> </header>
   <main>
+  <div id="main">
+    <div id="hero">
+      <h1>  Crime Monthly Rhythm Maps </h1>
+      <p class="hero-lead">
+           Rhythm maps for San Diego Crime incidents, from 2007 to 2014.
+      </p>
+      
+      <p>
+          <a class="button outline big" href="https://github.com/sandiegodata/notebooks/blob/master/crime/Crime%20Monthly%20Rhythm%20Maps.ipynb" >View Full Notebook on Github</a>
+      </p>
+      
 
-<div id="main">
-  
-  
-  
-  
-  <h3>Jupyter Notebooks and Tutorials on Using Public Data</h3>
-  
-  <div id="components">
-      
-    <div class="row gutters">
-      
-      
-      
-      
-      <div class="col col-4 item white-bg-color" 
-       
-      >
-        <h4><a href="http://kb.sandiegodata.org/notebooks/crime-monthly-rhythm-maps/"> Crime Monthly Rhythm Maps</a></h4>
-        <p><small>
-            
+    </div> 
+    <div id="kube-component" class="content">
+    
 
-  
-  
-    Eric Busboom
-  
+    
 
-, 
-            Nov 12, 2017
-        </small></p>
-        <p>Rhythm maps for San Diego Crime incidents, from 2007 to 2014</p>
-      </div>
-      
-      
-      
-      <div class="col col-4 item white-bg-color" 
-       
-      >
-        <h4><a href="http://kb.sandiegodata.org/notebooks/san-diego-police-calls-for-service/"> San Diego Police Calls For Service</a></h4>
-        <p><small>
-            
+<p>This analysis will examine six years of data that was aggregated by SANDAG and processed by the <a href="http://sandiegodata.org">San Diego Regional Data Library</a> to visualize crime patterns on a weekly and hourly basis. The analysis uses 797,978 crime incidents. The data is published in CSV and shapefile form at the <a href="http://data.sandiegodata.org/dataset/clarinova_com-crime-incidents-casnd-7ba4-extract">Library&rsquo;s data repository</a></p>
 
-  
-  
-    Eric Busboom
-  
+<p>These heat maps, also know as rhythm maps,  are square grids where each hour of the week is represented by a cell. The vertical axis is hour of day, and the horizontal axis is day of week, with Sunday being the area between 0 and 1, etc.  The color indicates the number of crimes in that hour of the week, with red being larger than yellow. Note that each grid is scaled independently, so a red square in one heatmap is not comparable to a red square in another heatmap. This visualization is only for looking at the paterns of crimes over time; it doesn&rsquo;t tell you anything about the number of crimes, except the relative relationship between hours in a single grid.</p>
 
-, 
-            Nov 11, 2017
-        </small></p>
-        <p>Maps and time ryhthms in the San Diego Police calls for service dataset</p>
-      </div>
-      
-      
-      
-      
-      
-      <div class="col col-4 item white-bg-color" 
-       
-      >
-        <h4><a href="http://kb.sandiegodata.org/notebooks/american-community-server-demonstration/"> American Community Server Demonstration</a></h4>
-        <p><small>
-            
+<p>There are three types of incidents:
+* Crime Cases
+* Arrests
+* Citations</p>
 
-  
-  
-    Eric Busboom
-  
+<p>However, this version of the dataset doesn&rsquo;t have the column from the original dataset that has these values, so this analysis will include all of them.</p>
 
-, 
-            Nov 17, 2017
-        </small></p>
-        <p>A demonstration of how to use American Community Survey data with Metapack.</p>
-      </div>
-      
-      
-      
-      <div class="col col-4 item white-bg-color" 
-       
-      >
-        <h4><a href="http://kb.sandiegodata.org/notebooks/metapack-access-example/"> Metapack Access Example</a></h4>
-        <p><small>
-            
+<p>There are 12 crime categories, expressed as the codes established by the FBI. ( UCR codes. )</p>
 
-  
-  
-    Eric Busboom
-  
+<p>First we will look at all of the incidents in the city, and then by each type. A grid is blank when there are fewer than 40 incidents of that  type and category.</p>
 
-, 
-            Nov 11, 2017
-        </small></p>
-        <p>Examples for opening Metapack packages from a CKAN repository</p>
-      </div>
-      
-      
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>date</th>
+      <td>2008-01-01 00:00:00</td>
+      <td>2008-01-01 00:00:00</td>
+      <td>2008-01-01 00:00:00</td>
+      <td>2008-01-01 00:00:00</td>
+      <td>2008-01-01 00:00:00</td>
+    </tr>
+    <tr>
+      <th>year</th>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2008</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>month</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>day</th>
+      <td>2922</td>
+      <td>2922</td>
+      <td>2922</td>
+      <td>2922</td>
+      <td>2922</td>
+    </tr>
+    <tr>
+      <th>week</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>dow</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>time</th>
+      <td>2017-11-12 00:00:00</td>
+      <td>2017-11-12 00:00:00</td>
+      <td>2017-11-12 00:00:00</td>
+      <td>2017-11-12 00:00:00</td>
+      <td>2017-11-12 00:00:00</td>
+    </tr>
+    <tr>
+      <th>hour</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>is_night</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td>THEFT/LARCENY</td>
+      <td>FRAUD</td>
+      <td>FRAUD</td>
+      <td>FRAUD</td>
+      <td>FRAUD</td>
+    </tr>
+    <tr>
+      <th>address</th>
+      <td>2500  Block Orion Way</td>
+      <td>1200  Block Aguirre Drive</td>
+      <td>2400  Block Golfcrest Loop</td>
+      <td>2500  Block Catamaran Way</td>
+      <td>400  Block J Street</td>
+    </tr>
+    <tr>
+      <th>city</th>
+      <td>SndCAR</td>
+      <td>SndCHU</td>
+      <td>SndOCN</td>
+      <td>SndCHU</td>
+      <td>SndCHU</td>
+    </tr>
+    <tr>
+      <th>segment_id</th>
+      <td>103154</td>
+      <td>154361</td>
+      <td>71714</td>
+      <td>172915</td>
+      <td>38410</td>
+    </tr>
+    <tr>
+      <th>nbrhood</th>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <th>community</th>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <th>comm_pop</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>council</th>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+      <td>NONE</td>
+    </tr>
+    <tr>
+      <th>council_pop</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>asr_zone</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>lampdist</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>lat</th>
+      <td>33.1378</td>
+      <td>32.6303</td>
+      <td>33.1934</td>
+      <td>32.656</td>
+      <td>32.6261</td>
+    </tr>
+    <tr>
+      <th>lon</th>
+      <td>-117.266</td>
+      <td>-117.004</td>
+      <td>-117.316</td>
+      <td>-116.958</td>
+      <td>-117.079</td>
+    </tr>
+    <tr>
+      <th>desc</th>
+      <td>PETTY THEFT</td>
+      <td>FRAUD</td>
+      <td>FRAUD</td>
+      <td>FRAUD</td>
+      <td>FRAUD</td>
+    </tr>
+    <tr>
+      <th>gctype</th>
+      <td>cns/segment</td>
+      <td>cns/segment</td>
+      <td>cns/segment</td>
+      <td>cns/segment</td>
+      <td>cns/segment</td>
+    </tr>
+    <tr>
+      <th>gcquality</th>
+      <td>65</td>
+      <td>65</td>
+      <td>22</td>
+      <td>65</td>
+      <td>65</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h1 id="hour-vs-week-of-year-by-major-crime-type">Hour vs Week of Year By Major Crime Type</h1>
+
+<p>These maps show the hour of the day on the vertical axis and week of year on the horizonal, with all of the years in the dataset combined. The maps clearly show a 5AM daily lull, and a spike in DUIs in the middle of the summer.</p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_8_0.png" alt="png" /></p>
+
+<h1 id="week-of-year-by-data-year">Week of Year by Data Year</h1>
+
+<p>With a vertical axis of the year of the data, these maps plot one box per week for all weeks in the dataset. THe most significant patter is the reduction in DUI and Alcohol crimes in the later years.</p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_10_0.png" alt="png" /></p>
+
+<p>In &lsquo;Year vs Week by Category&rsquo;, the years run from 2006 to 2013, where &lsquo;7&rsquo; is 2013.</p>
+
+<h1 id="hour-of-day-vs-week-of-year-for-pacific-beach">Hour of Day Vs Week of Year, for Pacific Beach</h1>
+
+<p>These maps show a seasonal rhythm, with the strongest being the cluster of alcohol crimes  in the afternoon and evenings in the summer.</p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_13_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_15_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_16_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_17_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_18_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_19_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_20_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_21_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_22_0.png" alt="png" /></p>
+
+<p><img src="/img/crime-monthly-rhythm-maps/output_23_0.png" alt="png" /></p>
+
+
+    
     </div>
-  </div>
-  
-  
-</div>
-</div>
-
+    </div>
 </main>
-  <footer>   <footer id="footer">
-    <nav>
-      <ul>
-        <li>
-          <a href="http://sandiegodata.org">San Diego Regional Data Library</a>
-        </li>
-
-      </ul>
-    </nav>
-  </footer> </footer>
+  <footer></footer>
 
 
   <script src="/js/kube.js" type="text/javascript">
