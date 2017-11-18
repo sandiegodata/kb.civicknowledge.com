@@ -55,6 +55,16 @@ The presentation will use the San Diego Police 2015 calls for service, but the d
     </item>
     
     <item>
+      <title> American Community Survey Demonstration</title>
+      <link>http://kb.sandiegodata.org/notebooks/american-community-survey-demonstration/</link>
+      <pubDate>Fri, 17 Nov 2017 22:19:26 +0000</pubDate>
+      
+      <guid>http://kb.sandiegodata.org/notebooks/american-community-survey-demonstration/</guid>
+      <description>This tutorial will demonstrate how to use Metapack with data from Census Reporter to analyze US Demographics. You will need to install at least these python packages, using pip:
+pip install metapack pip install publicdata pip install seaborn pip install geopandas pip install pysal Finding Data In Census Reporter The first step is to visit Census Reporter and find the dataset you want to work on. Census Reporter is probably the best search interface for American Community Survey data.</description>
+    </item>
+    
+    <item>
       <title> American Community Server Demonstration</title>
       <link>http://kb.sandiegodata.org/notebooks/american-community-server-demonstration/</link>
       <pubDate>Fri, 17 Nov 2017 22:11:27 +0000</pubDate>
