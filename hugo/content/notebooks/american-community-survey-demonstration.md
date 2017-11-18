@@ -9,9 +9,9 @@
             "type": "wrangler"
         }
     ],
-    "date": "2017-11-17T22:19:26.760894",
+    "date": "2017-11-17T22:25:11.004595",
     "description": "A demonstration of how to use American Community Survey data with Metapack.",
-    "github": "https://github.com/sandiegodata/notebooks/blob/master/crime/San%20Diego%20Police%20Calls%20For%20Service.ipynb",
+    "github": "https://github.com/sandiegodata/notebooks/blob/master/tutorial/American%20Community%20Survey.ipynb",
     "identifier": "e14510ec-57b3-4fae-8c4e-c47ca7c6b55b",
     "show_input": "show",
     "slug": "american-community-survey-demonstration",
