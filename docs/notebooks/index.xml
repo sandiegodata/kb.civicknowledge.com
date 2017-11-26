@@ -33,9 +33,18 @@ The presentation will use the San Diego Police 2015 calls for service, but the d
     </item>
     
     <item>
+      <title> Demographics and Business Loans</title>
+      <link>http://kb.sandiegodata.org/notebooks/demographics-and-business-loans/</link>
+      <pubDate>Sat, 25 Nov 2017 11:32:45 +0000</pubDate>
+      
+      <guid>http://kb.sandiegodata.org/notebooks/demographics-and-business-loans/</guid>
+      <description>%load_ext metapack %matplotlib inline import pandas as pd import geopandas as gpd import numpy as np import metapack as mp import matplotlib.pyplot as plt import seaborn as sns from sdipylib.geo import * sns.set(color_codes=True) from pkg_resources import get_distribution assert get_distribution(&amp;#39;publicdata&amp;#39;).version &amp;gt;= &amp;#39;0.1.3&amp;#39; This notebook is a demonstration of how to combine FFIEC records of business loans with census data and display the data in a variety of type of maps. The demonstration will cover using Metatab and Metapack to access data, creating maps with GeoPandas, and creating zoomable maps with a basemap using folium.</description>
+    </item>
+    
+    <item>
       <title> American Community Survey Demonstration</title>
       <link>http://kb.sandiegodata.org/notebooks/american-community-survey-demonstration/</link>
-      <pubDate>Fri, 17 Nov 2017 22:19:26 +0000</pubDate>
+      <pubDate>Fri, 17 Nov 2017 22:25:11 +0000</pubDate>
       
       <guid>http://kb.sandiegodata.org/notebooks/american-community-survey-demonstration/</guid>
       <description>This tutorial will demonstrate how to use Metapack with data from Census Reporter to analyze US Demographics. You will need to install at least these python packages, using pip:
